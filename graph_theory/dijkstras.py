@@ -2,17 +2,18 @@ from heapq import *
 
 def dijkstras(g, start, end):
     pq = []
-    heappush(0, start)
+    heappush(pq, (0, start))
     visited = [-1 for n in g]
+    #visited[start] = 0
 
     while (len(pq) > 0):
-        cW , cN = heappop()
-        if visited[cN]: continue
-        print(cN) # debug
+        #print(visited) # debug
+        cW , cN = heappop(pq)
+        if visited[cN] != -1: continue
+        #print(cN) # debug
         visited[cN] = cW 
-
         if (cN == end): return cW 
 
         for eW, eN in g[cN]:
             if visited[eN] != -1: continue
-            heappush(cW + eW, eN)
+            heappush(pq, (cW + eW, eN))
