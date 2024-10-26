@@ -6,11 +6,11 @@ def bsmin(lo, hi, f):
     while lo < hi:
         mid = lo + (hi - lo) // 2
 
-    if f(mid):
-        hi = mid
-    else:
-        lo = mid + 1
-        return lo
+        if f(mid):
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
 
 def bsMax(lo, hi, f):
     assert hi >= lo
